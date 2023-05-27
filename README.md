@@ -16,7 +16,6 @@ AUTHORS
 * Dave Yeo (2023)
 * Martin Iturbide (2023)
 * Rick Fishman
-* Guy Scharf
 
 LINKS
 ===============
