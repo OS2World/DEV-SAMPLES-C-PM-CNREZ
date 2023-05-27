@@ -1,7 +1,6 @@
 /*********************************************************************
  *                                                                   *
- * MODULE NAME :  cnrez.c                AUTHOR:  Rick Fishman       *
- * DATE WRITTEN:  10-06-92                                           *
+ * MODULE NAME :  cnrez.c                			     *
  *                                                                   *
  * HOW TO RUN THIS PROGRAM:                                          *
  *                                                                   *
@@ -29,15 +28,6 @@
  *  I hope this code proves useful for other PM programmers. The     *
  *  more of us the better!                                           *
  *                                                                   *
- * HISTORY:                                                          *
- *                                                                   *
- *  10-06-92 - Program coded                                         *
- *                                                                   *
- *  Rick Fishman                                                     *
- *  Code Blazers, Inc.                                               *
- *  4113 Apricot                                                     *
- *  Irvine, CA. 92720                                                *
- *  CIS ID: 72251,750                                                *
  *                                                                   *
  *********************************************************************/
 
@@ -51,6 +41,7 @@
 #define  INCL_WINSTDCNR
 #define  INCL_WINSTDDLGS
 #define  INCL_WINWINDOWMGR
+#define  INCL_WINDIALOGS
 
 /**********************************************************************/
 /*----------------------------- INCLUDES -----------------------------*/
@@ -151,9 +142,9 @@ INT main( VOID )
 
     hmq = WinCreateMsgQueue( hab, 0 );
 
-    WinRegisterClass( hab, szClass, wpClient, CS_SIZEREDRAW, 0 );
+    WinRegisterClass( hab, (PCSZ) szClass, wpClient, CS_SIZEREDRAW, 0 );
 
-    hwndFrame = WinCreateStdWindow( HWND_DESKTOP, 0, &flFrame, szClass, NULL,
+    hwndFrame = WinCreateStdWindow( HWND_DESKTOP, 0, &flFrame, (PCSZ) szClass, NULL,
                                     0, NULLHANDLE, ID_RESOURCES, &hwndClient );
 
     CustomizeWindow();
@@ -216,7 +207,7 @@ static VOID CustomizeWindow()
 
     WinSendMsg( hwndCnr, CM_INVALIDATERECORD, NULL, NULL );
 
-    WinSetWindowText( hwndFrame, PROGRAM_TITLE );
+    WinSetWindowText( hwndFrame, (PCSZ) PROGRAM_TITLE );
 
     WinShowWindow( hwndFrame, TRUE );
 }
@@ -492,7 +483,7 @@ static VOID InsertRecord()
     {
         FillInRecord( pciChild, iChild );
 
-        pciChild->rc.pszIcon = szChildRecName;
+        pciChild->rc.pszIcon = (PSZ) szChildRecName;
 
         pciChild = (PCNRITEM) pciChild->rc.preccNextRecord;
     }
@@ -517,11 +508,11 @@ static VOID InsertRecord()
 static VOID FillInRecord( PCNRITEM pci, INT iRecNum )
 {
     pci->rc.cb          = sizeof( MINIRECORDCORE );
-    pci->rc.pszIcon     = szRecName;
+    pci->rc.pszIcon     = (PSZ) szRecName;
     pci->rc.hptrIcon    = hptr;
 
     pci->hptrIcon       = hptr;
-    pci->szData         = szItemData;
+    pci->szData         = (PSZ) szItemData;
     pci->date.day       = 11;
     pci->date.month     = 11;
     pci->date.year      = 11;
@@ -550,7 +541,7 @@ static VOID SetContainerView( ULONG ulViewType )
 
     cnri.cb = sizeof( CNRINFO );
 
-    cnri.pszCnrTitle = szCnrTitle;
+    cnri.pszCnrTitle = (PSZ) szCnrTitle;
 
     cnri.flWindowAttr = ulViewType | CA_CONTAINERTITLE | CA_TITLESEPARATOR;
 
@@ -629,7 +620,7 @@ static VOID CnrEndEdit( PCNREDITDATA pced )
 
     if( !pfi || pfi->offStruct == FIELDOFFSET( CNRITEM, szData ) )
     {
-        WinQueryWindowText( hwndMLE, MAX_DATA_LENGTH, szData );
+        WinQueryWindowText( hwndMLE, MAX_DATA_LENGTH, (PCH) szData );
 
         if( !stricmp( szData, "BADREC" ) )
             WinAlarm( HWND_DESKTOP, WA_WARNING );
@@ -642,4 +633,3 @@ static VOID CnrEndEdit( PCNREDITDATA pced )
 /*************************************************************************
  *                     E N D     O F     S O U R C E                     *
  *************************************************************************/
-

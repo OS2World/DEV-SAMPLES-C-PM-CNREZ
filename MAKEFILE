@@ -1,33 +1,20 @@
-###########################################################################
-#                                                                         #
-# MAKE FILE FOR CNREZ.EXE                                                 #
-#                                                                         #
-# HISTORY:                                                                #
-#                                                                         #
-#  10-06-92 - created                                                     #
-#                                                                         #
-#  Rick Fishman                                                           #
-#  Code Blazers, Inc.                                                     #
-#  4113 Apricot                                                           #
-#  Irvine, CA. 92720                                                      #
-#  CIS ID: 72251,750                                                      #
-#                                                                         #
-###########################################################################
+# make makefile
+#
+# Tools used:
+#  Compile::Resource Compiler
+#  Compile::GNU C
+#  Make: make
+all : cnrez.exe
 
-BASE=cnrez
+cnrez.exe : cnrez.obj cnrez.res cnrez.def
+	gcc -Zomf cnrez.obj cnrez.res cnrez.def -o cnrez.exe
+	wrc cnrez.res
 
-CFLAGS=/Q+ /Ss /W3 /Kbcepr /Gm- /Gd- /Ti+ /O- /C
-LFLAGS=/NOI /NOE /MAP /DE /NOL /A:16 /EXEPACK /BASE:65536
+cnrez.obj : cnrez.c cnrez.h
+	gcc -Wall -Zomf -c -O2 cnrez.c -o cnrez.obj
 
-.SUFFIXES: .c
+cnrez.res : cnrez.rc 
+	wrc -r cnrez.rc
 
-.c.obj:
-    icc $(CFLAGS) $*.c
-
-$(BASE).exe: $*.obj $*.res $*.def
-    link386 $(LFLAGS) $*,,, os2386, $*
-    rc $*.res $@
-
-$(BASE).res: $*.rc
-    rc -r $*
-
+clean :
+	rm -rf *exe *res *obj *lib *dll *map

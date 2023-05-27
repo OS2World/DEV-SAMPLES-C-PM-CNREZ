@@ -1,21 +1,11 @@
 /*********************************************************************
  *                                                                   *
- * MODULE NAME :  cnrez.rc               AUTHOR:  Rick Fishman       *
- * DATE WRITTEN:  10-06-92                                           *
+ * MODULE NAME :  cnrez.rc               			     *
  *                                                                   *
  * DESCRIPTION:                                                      *
  *                                                                   *
  *  Resource file for CNREZ.EXE.                                     *
  *                                                                   *
- * HISTORY:                                                          *
- *                                                                   *
- *  10-06-92 - File Created                                          *
- *                                                                   *
- *  Rick Fishman                                                     *
- *  Code Blazers, Inc.                                               *
- *  4113 Apricot                                                     *
- *  Irvine, CA. 92720                                                *
- *  CIS ID: 72251,750                                                *
  *                                                                   *
  *********************************************************************/
 
@@ -35,4 +25,3 @@ MENU ID_RESOURCES
         MENUITEM "T~ext/flowed",      IDM_TEXT
     }
 }
-

@@ -1,8 +1,7 @@
+;-------------------------------------
+; CNREZ.DEF module definition file
+;-------------------------------------
+
 NAME           CNREZ      WINDOWAPI
 
-DESCRIPTION    'Container sample program Copyright(R) Code Blazers, Inc. 1992'
-PROTMODE
-HEAPSIZE       16384
-STACKSIZE      16384
-
-
+DESCRIPTION     '@#OS2World:1.01#@##1## 25 May 2023 20:00:00     ARCAOS-507::::::v1.01@@Container sample program'

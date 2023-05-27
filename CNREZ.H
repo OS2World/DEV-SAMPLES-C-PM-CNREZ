@@ -1,21 +1,11 @@
 /*********************************************************************
  *                                                                   *
- * MODULE NAME :  cnrez.h                AUTHOR:  Rick Fishman       *
- * DATE WRITTEN:  10-06-92                                           *
+ * MODULE NAME :  cnrez.h                			     *
  *                                                                   *
  * DESCRIPTION:                                                      *
  *                                                                   *
  *  Common definitions and function prototypes for CNREZ.EXE         *
  *                                                                   *
- * HISTORY:                                                          *
- *                                                                   *
- *  10-06-92 - File Created                                          *
- *                                                                   *
- *  Rick Fishman                                                     *
- *  Code Blazers, Inc.                                               *
- *  4113 Apricot                                                     *
- *  Irvine, CA. 92720                                                *
- *  CIS ID: 72251,750                                                *
  *                                                                   *
  *********************************************************************/
 
@@ -27,4 +17,3 @@
 #define IDM_TREE         120
 #define IDM_DETAILS      130
 #define IDM_TEXT         140
-
